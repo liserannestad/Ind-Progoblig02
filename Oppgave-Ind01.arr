@@ -1,64 +1,37 @@
-fun nordiske-flagg(flagg :: String) -> Image:
-  if flagg == "Norge":
-    frame(
-    overlay-align("left", "top", square(60, "solid", "red"),
-      overlay-align("left", "bottom", square(60, "solid", "red"),
-        overlay-align("left", "top", square(70, "solid", "white"),
-          overlay-align("left", "bottom", square(70, "solid", "white"),
-            overlay-align("right", "top", rectangle(120, 60, "solid", "red"),
-              overlay-align("right", "bottom", rectangle(120, 60, "solid", "red"),
-                overlay-align("right", "top", rectangle(130, 70, "solid", "white"),
-                  overlay-align("right", "bottom", rectangle(130, 70, "solid", "white"), 
-                      rectangle(220, 160, "solid", "darkblue"))))))))))
-  else if flagg == "Danmark":
-    frame(
-    overlay-align("left", "top", square(120, "solid", "red"),
-      overlay-align("left", "bottom", square(120, "solid", "red"),
-        overlay-align("right", "top", rectangle(210, 120, "solid", "red"),
-          overlay-align("right", "bottom", rectangle(210, 120, "solid", "red"), 
-              rectangle(370, 280, "solid", "white"))))))
-  else if flagg == "Sverige":
-    frame(
-    overlay-align("left", "top", rectangle(50, 40, "solid", "blue"),
-      overlay-align("left", "bottom", rectangle(50, 40, "solid", "blue"),
-        overlay-align("right", "top", rectangle(90, 40, "solid", "blue"),
-          overlay-align("right", "bottom", rectangle(90, 40, "solid", "blue"),
-              rectangle(160, 100, "solid", "yellow"))))))
-  else if flagg == "Finland":
-    frame(
-    overlay-align("left", "top", rectangle(50, 40, "solid", "white"),
-      overlay-align("left", "bottom", rectangle(50, 40, "solid", "white"),
-        overlay-align("right", "top", rectangle(100, 40, "solid", "white"),
-          overlay-align("right", "bottom", rectangle(100, 40, "solid", "white"), 
-              rectangle(180, 110, "solid", "darkblue"))))))
-  else if flagg == "Island":
-    frame(
-    overlay-align("left", "top", square(70, "solid", "blue"),
-      overlay-align("left", "bottom", square(70, "solid", "blue"),
-        overlay-align("left", "top", square(80, "solid", "white"),
-          overlay-align("left", "bottom", square(80, "solid", "white"),
-            overlay-align("right", "top", rectangle(140, 70, "solid", "blue"),
-              overlay-align("right", "bottom", rectangle(140, 70, "solid", "blue"),
-                overlay-align("right", "top", rectangle(150, 80, "solid", "white"),
-                  overlay-align("right", "bottom", rectangle(150, 80, "solid", "white"), 
-                      rectangle(250, 180, "solid", "red"))))))))))    
-  else if flagg == "Færøyene":
-    frame(
-    overlay-align("left", "top", square(60, "solid", "white"),
-      overlay-align("left", "bottom", square(60, "solid", "white"),
-        overlay-align("left", "top", square(70, "solid", "blue"),
-          overlay-align("left", "bottom", square(70, "solid", "blue"),
-            overlay-align("right", "top", rectangle(120, 60, "solid", "white"),
-            overlay-align("right", "bottom", rectangle(120, 60, "solid", "white"),
-                overlay-align("right", "top", rectangle(130, 70, "solid", "blue"),
-                  overlay-align("right", "bottom", rectangle(130, 70, "solid", "blue"), 
-                      rectangle(220, 160, "solid", "red"))))))))))
-  end
+#SR - small-rec
+#LSR - left-small-rec
+#RSR - right-small-rec
+#BR - big - rec 
+#LBR - left-big-rec
+#RBR - right-big-rec
+
+fun nordiske-flagg(small-rec, SR-height, LSR-lenght, RSR-lenght, big-rec, BR-height, LBR-lenght, RBR-lenght, cross-colour, cross-dimention):
+   frame(
+    overlay-align("left", "top", rectangle(LSR-lenght, SR-height, "solid", small-rec),
+      overlay-align("left", "bottom", rectangle(LSR-lenght, SR-height, "solid", small-rec),
+        overlay-align("left", "top", rectangle(LBR-lenght, BR-height, "solid", big-rec),
+          overlay-align("left", "bottom", rectangle(LBR-lenght, BR-height, "solid", big-rec),
+            overlay-align("right", "top", rectangle(RSR-lenght, SR-height, "solid", small-rec),
+              overlay-align("right", "bottom", rectangle(RSR-lenght, SR-height, "solid", small-rec),
+                overlay-align("right", "top", rectangle(RBR-lenght, BR-height, "solid", big-rec),
+                  overlay-align("right", "bottom", rectangle(RBR-lenght, BR-height, "solid", big-rec), 
+                    rectangle((cross-dimention + LBR-lenght + RBR-lenght), (cross-dimention + (BR-height * 2)), "solid", cross-colour))))))))))
 end
 
-nordiske-flagg("Norge")
-nordiske-flagg("Sverige")
-nordiske-flagg("Danmark")
-nordiske-flagg("Finland")
-nordiske-flagg("Island")
-nordiske-flagg("Færøyene")
+norges-flagg = nordiske-flagg("red", 60, 60, 120, "white", 70, 70, 130, "dark-blue", 20)
+norges-flagg
+
+danmarks-flagg = nordiske-flagg("red", 0, 0, 0, "red", 120, 120, 210, "white", 40)
+danmarks-flagg
+
+finlands-flagg = nordiske-flagg("white", 0, 0, 0, "white", 40, 50, 100, "dark-blue", 30)
+finlands-flagg
+
+islands-flagg = nordiske-flagg("blue", 70, 70, 140, "white", 80, 80, 150, "red", 20)
+islands-flagg
+
+sveriges-flagg = nordiske-flagg("blue", 0, 0 , 0, "blue", 40, 50, 90, "yellow", 20)
+sveriges-flagg
+
+faeroyenes-flagg = nordiske-flagg("white", 60, 60, 120, "blue", 70, 70, 130, "red", 20)
+faeroyenes-flagg
