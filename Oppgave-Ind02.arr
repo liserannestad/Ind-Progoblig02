@@ -68,3 +68,11 @@ cleaned-table-with-car = transform-column(kWh-wealthy-consumer-data, "energi", e
 
 print(cleaned-table-with-car)
 bar-chart(cleaned-table-with-car, "komponent", "energi")
+
+#Legger til rad i tabellen med totalt energiforbruk for en "typisk" innbygger i et industriland
+sum-table = table: komponent, energi
+  row: "Total energy consumption", total-energy-consumption
+end
+
+adding-sum-row = add-row(cleaned-table-with-car, sum-table.row-n(0))
+print(adding-sum-row)
